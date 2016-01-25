@@ -26,6 +26,7 @@ var cubeMaterial;
 var planeMaterial;
 var sphereMaterial;
 var axes;
+//cube parts
 var cubeHead;
 var cubeBody;
 var cubeLeftarm;
@@ -34,13 +35,13 @@ var cubeLeftleg;
 var cubeRightleg;
 var cubeLeftfoot;
 var cubeRightfoot;
+//--------------------
 var plane;
 var sphere;
 var spotLight;
 var pointLight;
 var control;
 var cubeMan;
-var cubeManColor;
 var gui;
 var stats;
 var step = 0;

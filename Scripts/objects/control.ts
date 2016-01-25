@@ -12,14 +12,14 @@ module objects {
 		}
         
         public randomColor(): void{
-            cubeHead.material.color.setRGB(Math.random());
-            cubeBody.material.color.setRGB(Math.random());
-            cubeLeftarm.material.color.setRGB(Math.random());
-            cubeRightarm.material.color.setRGB(Math.random());
-            cubeLeftleg.material.color.setRGB(Math.random());
-            cubeRightleg.material.color.setRGB(Math.random());
-            cubeLeftfoot.material.color.setRGB(Math.random());
-            cubeRightfoot.material.color.setRGB(Math.random());
+            cubeHead.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeBody.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeLeftarm.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeRightarm.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeLeftleg.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeRightleg.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeLeftfoot.material.color.setRGB(Math.random(), Math.random(), Math.random());
+            cubeRightfoot.material.color.setRGB(Math.random(), Math.random(), Math.random());
             
             //scene.add(cubeManColor)
         }

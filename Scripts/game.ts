@@ -28,6 +28,7 @@ var cubeMaterial: LambertMaterial;
 var planeMaterial: LambertMaterial;
 var sphereMaterial: LambertMaterial;
 var axes:AxisHelper;
+//cube parts
 var cubeHead;
 var cubeBody;
 var cubeLeftarm;
@@ -36,13 +37,13 @@ var cubeLeftleg;
 var cubeRightleg;
 var cubeLeftfoot;
 var cubeRightfoot;
+//--------------------
 var plane: Mesh;
 var sphere: Mesh;
 var spotLight: SpotLight;
 var pointLight: PointLight;
 var control: Control;
 var cubeMan;
-var cubeManColor: LambertMaterial;
 var gui: GUI;
 var stats:Stats;
 var step:number = 0;
