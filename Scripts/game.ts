@@ -28,13 +28,20 @@ var cubeMaterial: LambertMaterial;
 var planeMaterial: LambertMaterial;
 var sphereMaterial: LambertMaterial;
 var axes:AxisHelper;
-var cube: Mesh;
+var cubeHead;
+var cubeBody;
+var cubeLeftarm;
+var cubeRightarm;
+var cubeLeftleg;
+var cubeRightleg;
+var cubeLeftfoot;
+var cubeRightfoot;
 var plane: Mesh;
 var sphere: Mesh;
 var spotLight: SpotLight;
 var pointLight: PointLight;
 var control: Control;
-var cubeMan: THREE.Object3D;
+var cubeMan;
 var cubeManColor: LambertMaterial;
 var gui: GUI;
 var stats:Stats;
@@ -68,105 +75,105 @@ function init() {
     
     //Add head to the Scene
 	cubeGeometry = new CubeGeometry(3, 3, 3);
-	cubeMaterial = new LambertMaterial({color:0xFF0000});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0x000FF});
+	cubeHead = new Mesh(cubeGeometry, cubeMaterial);
+	cubeHead.castShadow = true;
 
-    cube.position.x = 0;
-    cube.position.y = 14;
-    cube.position.z = 0;
+    cubeHead.position.x = 0;
+    cubeHead.position.y = 14;
+    cubeHead.position.z = 0;
 
     cubeMan = new THREE.Object3D;
     
-	cubeMan.add(cube);
+	cubeMan.add(cubeHead);
 	console.log("Added Cube Primitive to scene...");
 
      //Add a body to the Scene
 	cubeGeometry = new CubeGeometry(5, 5, 2);
-	cubeMaterial = new LambertMaterial({color:0x0000});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0xFFD700});
+	cubeBody = new Mesh(cubeGeometry, cubeMaterial);
+	cubeBody.castShadow = true;
 
-    cube.position.x = 0;
-    cube.position.y = 10;
-    cube.position.z = 0;
+    cubeBody.position.x = 0;
+    cubeBody.position.y = 10;
+    cubeBody.position.z = 0;
 
-	cubeMan.add(cube);
+	cubeMan.add(cubeBody);
 
     //Add a right arm to the Scene
 	cubeGeometry = new CubeGeometry(1, 5, 2);
-	cubeMaterial = new LambertMaterial({color:0xCC0103});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0x008000});
+	cubeRightarm = new Mesh(cubeGeometry, cubeMaterial);
+	cubeRightarm.castShadow = true;
 
-    cube.position.x = -4;
-    cube.position.y = 10.75;
-    cube.position.z = 0;
+    cubeRightarm.position.x = -4;
+    cubeRightarm.position.y = 10.75;
+    cubeRightarm.position.z = 0;
     
-    cube.rotation.z = -1;
+    cubeRightarm.rotation.z = -1;
 
-	cubeMan.add(cube);
+	cubeMan.add(cubeRightarm);
     
     //Add a left arm to the Scene
 	cubeGeometry = new CubeGeometry(1, 5, 2);
-	cubeMaterial = new LambertMaterial({color:0xCC0103});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0x008000});
+	cubeLeftarm = new Mesh(cubeGeometry, cubeMaterial);
+	cubeLeftarm.castShadow = true;
 
-    cube.position.x = 4;
-    cube.position.y = 10.75;
-    cube.position.z = 0;
-    cube.rotation.z = 1;
+    cubeLeftarm.position.x = 4;
+    cubeLeftarm.position.y = 10.75;
+    cubeLeftarm.position.z = 0;
+    cubeLeftarm.rotation.z = 1;
 
-	cubeMan.add(cube);
+	cubeMan.add(cubeLeftarm);
     
     //Add a left leg to the Scene
 	cubeGeometry = new CubeGeometry(1, 5, 2);
-	cubeMaterial = new LambertMaterial({color:0xCC0103});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0x4B0082});
+	cubeLeftleg = new Mesh(cubeGeometry, cubeMaterial);
+	cubeLeftleg.castShadow = true;
 
-    cube.position.x = 1.5;
-    cube.position.y = 5;
-    cube.position.z = 0;
+    cubeLeftleg.position.x = 1.5;
+    cubeLeftleg.position.y = 5;
+    cubeLeftleg.position.z = 0;
 
-	cubeMan.add(cube);
+	cubeMan.add(cubeLeftleg);
     
     //Add a right leg to the Scene
 	cubeGeometry = new CubeGeometry(1, 5, 2);
-	cubeMaterial = new LambertMaterial({color:0xCC0103});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0x4B0082});
+	cubeRightleg = new Mesh(cubeGeometry, cubeMaterial);
+	cubeRightleg.castShadow = true;
 
-    cube.position.x = -1.5;
-    cube.position.y = 5;
-    cube.position.z = 0;
+    cubeRightleg.position.x = -1.5;
+    cubeRightleg.position.y = 5;
+    cubeRightleg.position.z = 0;
 
-	cubeMan.add(cube);
+	cubeMan.add(cubeRightleg);
     
     //Add a left foot to the Scene
 	cubeGeometry = new CubeGeometry(1, 1, 3);
-	cubeMaterial = new LambertMaterial({color:0x0000});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0xADFF2F});
+	cubeLeftfoot = new Mesh(cubeGeometry, cubeMaterial);
+	cubeLeftfoot.castShadow = true;
 
-    cube.position.x = 1.5;
-    cube.position.y = 2;
-    cube.position.z = 0.5;
+    cubeLeftfoot.position.x = 1.5;
+    cubeLeftfoot.position.y = 2;
+    cubeLeftfoot.position.z = 0.5;
 
-	cubeMan.add(cube);
+	cubeMan.add(cubeLeftfoot);
     
     //Add a right foot to the Scene
 	cubeGeometry = new CubeGeometry(1, 1, 3);
-	cubeMaterial = new LambertMaterial({color:0x0000});
-	cube = new Mesh(cubeGeometry, cubeMaterial);
-	cube.castShadow = true;
+	cubeMaterial = new LambertMaterial({color:0xADFF2F});
+	cubeRightfoot = new Mesh(cubeGeometry, cubeMaterial);
+	cubeRightfoot.castShadow = true;
 
-    cube.position.x = -1.5;
-    cube.position.y = 2;
-    cube.position.z = 0.5;
+    cubeRightfoot.position.x = -1.5;
+    cubeRightfoot.position.y = 2;
+    cubeRightfoot.position.z = 0.5;
     
-    cubeMan.add(cube);
+    cubeMan.add(cubeRightfoot);
     
 
 
