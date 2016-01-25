@@ -37,13 +37,15 @@ var cubeLeftleg;
 var cubeRightleg;
 var cubeLeftfoot;
 var cubeRightfoot;
+
+var cubeMan;
+var cubeArms;
 //--------------------
 var plane: Mesh;
 var sphere: Mesh;
 var spotLight: SpotLight;
 var pointLight: PointLight;
 var control: Control;
-var cubeMan;
 var gui: GUI;
 var stats:Stats;
 var step:number = 0;
@@ -85,6 +87,7 @@ function init() {
     cubeHead.position.z = 0;
 
     cubeMan = new THREE.Object3D;
+    //cubeArms = new THREE.Object3D;
     
 	cubeMan.add(cubeHead);
 	console.log("Added Cube Primitive to scene...");
@@ -114,6 +117,7 @@ function init() {
     cubeRightarm.rotation.z = -1;
 
 	cubeMan.add(cubeRightarm);
+    //cubeArms.add(cubeRightarm);
     
     //Add a left arm to the Scene
 	cubeGeometry = new CubeGeometry(1, 5, 2);
@@ -127,6 +131,7 @@ function init() {
     cubeLeftarm.rotation.z = 1;
 
 	cubeMan.add(cubeLeftarm);
+    //cubeArms.add(cubeLeftarm);
     
     //Add a left leg to the Scene
 	cubeGeometry = new CubeGeometry(1, 5, 2);
@@ -177,7 +182,8 @@ function init() {
     cubeMan.add(cubeRightfoot);
     
 
-
+        
+    //scene.add(cubeArms);
 	scene.add(cubeMan);
     
 	// Add a SpotLight to the scene
@@ -189,7 +195,7 @@ function init() {
 	
     // add controls
 	gui = new GUI();
-	control = new Control(0, 0, 0);
+	control = new Control(0, 0, 0, 0);
 	addControl(control);
     
     // Add framerate stats
@@ -213,6 +219,8 @@ function addControl(controlObject: Control):void {
 	gui.add(controlObject, 'rotationY', 0, 0.5);
 	gui.add(controlObject, 'rotationZ', 0, 0.5);
     gui.add(controlObject,'randomColor');
+    gui.add(controlObject, 'resetScene');
+    //gui.add(controlObject, 'rotationXArms', 0, 0.5);
 }
 
 function addStatsObject() {
@@ -235,9 +243,15 @@ function gameLoop():void {
             cubeMan.rotation.x += control.rotationX;
             cubeMan.rotation.y += control.rotationY;
             cubeMan.rotation.z += control.rotationZ;
+            
+            
         }
+        /*if(obj == cubeArms){
+            cubeArms.rotation.x += control.rotationXArms;
+        }*/
         
     });
+    
     
     //scene.traverse(function(cubeManColor:THREE.MeshLambertMaterial){
     //   if(cubeManColor instanceof LambertMaterial) {

@@ -3,11 +3,14 @@ module objects {
         rotationX: number;
 		rotationY: number;
         rotationZ: number;
+        rotationXArms: number;
 		//bouncingSpeed: number;
-		constructor(rotationX: number, rotationY: number, rotationZ: number) {
+		constructor(rotationX: number, rotationY: number, rotationZ: number, rotationXArms: number) {
             this.rotationX = rotationX;
 			this.rotationY = rotationY;
 			this.rotationZ = rotationZ;
+            
+            this.rotationXArms = rotationXArms;
            
 		}
         
@@ -23,5 +26,12 @@ module objects {
             
             //scene.add(cubeManColor)
         }
+        public resetScene(): void{
+            this.rotationX = 0;
+            this.rotationY = 0;
+            this.rotationZ = 0;
+            
+        }
+       
 	}
 }

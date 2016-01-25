@@ -35,13 +35,14 @@ var cubeLeftleg;
 var cubeRightleg;
 var cubeLeftfoot;
 var cubeRightfoot;
+var cubeMan;
+var cubeArms;
 //--------------------
 var plane;
 var sphere;
 var spotLight;
 var pointLight;
 var control;
-var cubeMan;
 var gui;
 var stats;
 var step = 0;
@@ -73,6 +74,7 @@ function init() {
     cubeHead.position.y = 14;
     cubeHead.position.z = 0;
     cubeMan = new THREE.Object3D;
+    //cubeArms = new THREE.Object3D;
     cubeMan.add(cubeHead);
     console.log("Added Cube Primitive to scene...");
     //Add a body to the Scene
@@ -94,6 +96,7 @@ function init() {
     cubeRightarm.position.z = 0;
     cubeRightarm.rotation.z = -1;
     cubeMan.add(cubeRightarm);
+    //cubeArms.add(cubeRightarm);
     //Add a left arm to the Scene
     cubeGeometry = new CubeGeometry(1, 5, 2);
     cubeMaterial = new LambertMaterial({ color: 0x008000 });
@@ -104,6 +107,7 @@ function init() {
     cubeLeftarm.position.z = 0;
     cubeLeftarm.rotation.z = 1;
     cubeMan.add(cubeLeftarm);
+    //cubeArms.add(cubeLeftarm);
     //Add a left leg to the Scene
     cubeGeometry = new CubeGeometry(1, 5, 2);
     cubeMaterial = new LambertMaterial({ color: 0x4B0082 });
@@ -140,6 +144,7 @@ function init() {
     cubeRightfoot.position.y = 2;
     cubeRightfoot.position.z = 0.5;
     cubeMan.add(cubeRightfoot);
+    //scene.add(cubeArms);
     scene.add(cubeMan);
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
@@ -149,7 +154,7 @@ function init() {
     console.log("Added Spot Light to Scene");
     // add controls
     gui = new GUI();
-    control = new Control(0, 0, 0);
+    control = new Control(0, 0, 0, 0);
     addControl(control);
     // Add framerate stats
     addStatsObject();
@@ -167,6 +172,8 @@ function addControl(controlObject) {
     gui.add(controlObject, 'rotationY', 0, 0.5);
     gui.add(controlObject, 'rotationZ', 0, 0.5);
     gui.add(controlObject, 'randomColor');
+    gui.add(controlObject, 'resetScene');
+    //gui.add(controlObject, 'rotationXArms', 0, 0.5);
 }
 function addStatsObject() {
     stats = new Stats();
@@ -186,6 +193,9 @@ function gameLoop() {
             cubeMan.rotation.y += control.rotationY;
             cubeMan.rotation.z += control.rotationZ;
         }
+        /*if(obj == cubeArms){
+            cubeArms.rotation.x += control.rotationXArms;
+        }*/
     });
     //scene.traverse(function(cubeManColor:THREE.MeshLambertMaterial){
     //   if(cubeManColor instanceof LambertMaterial) {
