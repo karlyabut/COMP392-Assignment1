@@ -36,7 +36,7 @@ var cubeRightleg;
 var cubeLeftfoot;
 var cubeRightfoot;
 var cubeMan;
-var cubeArms;
+//var cubeArms;
 //--------------------
 var plane;
 var sphere;
@@ -51,16 +51,17 @@ function init() {
     scene = new Scene();
     setupRenderer(); // setup the default renderer
     setupCamera(); // setup the camera
+    scene.fog = new THREE.Fog(0xffffff, 0.015, 100);
     // add an axis helper to the scene
     axes = new AxisHelper(20);
     scene.add(axes);
     //Add a Plane to the Scene
-    planeGeometry = new PlaneGeometry(60, 20);
+    planeGeometry = new PlaneGeometry(60, 60);
     planeMaterial = new LambertMaterial({ color: 0xFFFFFF });
     plane = new Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
     plane.rotation.x = -0.5 * Math.PI;
-    plane.position.x = 15;
+    plane.position.x = 5;
     plane.position.y = 0;
     plane.position.z = 0;
     scene.add(plane);
@@ -154,7 +155,7 @@ function init() {
     console.log("Added Spot Light to Scene");
     // add controls
     gui = new GUI();
-    control = new Control(0, 0, 0, 0);
+    control = new Control(0, 0, 0);
     addControl(control);
     // Add framerate stats
     addStatsObject();
@@ -172,7 +173,7 @@ function addControl(controlObject) {
     gui.add(controlObject, 'rotationY', 0, 0.5);
     gui.add(controlObject, 'rotationZ', 0, 0.5);
     gui.add(controlObject, 'randomColor');
-    gui.add(controlObject, 'resetScene');
+    //gui.add(controlObject, 'resetScene');
     //gui.add(controlObject, 'rotationXArms', 0, 0.5);
 }
 function addStatsObject() {

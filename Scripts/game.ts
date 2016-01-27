@@ -39,7 +39,7 @@ var cubeLeftfoot;
 var cubeRightfoot;
 
 var cubeMan;
-var cubeArms;
+//var cubeArms;
 //--------------------
 var plane: Mesh;
 var sphere: Mesh;
@@ -57,19 +57,21 @@ function init() {
 	setupRenderer(); // setup the default renderer
 	
 	setupCamera(); // setup the camera
+    
+    scene.fog = new THREE.Fog(0xffffff, 0.015, 100);
 	
     // add an axis helper to the scene
     axes = new AxisHelper(20);
     scene.add(axes);
     
     //Add a Plane to the Scene
-	planeGeometry = new PlaneGeometry(60, 20);
+	planeGeometry = new PlaneGeometry(60, 60);
 	planeMaterial = new LambertMaterial({color:0xFFFFFF});
 	plane = new Mesh(planeGeometry, planeMaterial);
 	plane.receiveShadow = true;
 	
 	plane.rotation.x = -0.5 * Math.PI;
-    plane.position.x = 15;
+    plane.position.x = 5;
 	plane.position.y = 0;
     plane.position.z = 0;
 	
@@ -195,7 +197,7 @@ function init() {
 	
     // add controls
 	gui = new GUI();
-	control = new Control(0, 0, 0, 0);
+	control = new Control(0, 0, 0);
 	addControl(control);
     
     // Add framerate stats
@@ -219,7 +221,7 @@ function addControl(controlObject: Control):void {
 	gui.add(controlObject, 'rotationY', 0, 0.5);
 	gui.add(controlObject, 'rotationZ', 0, 0.5);
     gui.add(controlObject,'randomColor');
-    gui.add(controlObject, 'resetScene');
+    //gui.add(controlObject, 'resetScene');
     //gui.add(controlObject, 'rotationXArms', 0, 0.5);
 }
 
@@ -246,6 +248,7 @@ function gameLoop():void {
             
             
         }
+        
         /*if(obj == cubeArms){
             cubeArms.rotation.x += control.rotationXArms;
         }*/

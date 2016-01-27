@@ -5,12 +5,12 @@ module objects {
         rotationZ: number;
         rotationXArms: number;
 		//bouncingSpeed: number;
-		constructor(rotationX: number, rotationY: number, rotationZ: number, rotationXArms: number) {
+		constructor(rotationX: number, rotationY: number, rotationZ: number) {
             this.rotationX = rotationX;
 			this.rotationY = rotationY;
 			this.rotationZ = rotationZ;
             
-            this.rotationXArms = rotationXArms;
+            //this.rotationXArms = rotationXArms;
            
 		}
         
