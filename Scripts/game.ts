@@ -39,7 +39,7 @@ var cubeLeftfoot;
 var cubeRightfoot;
 
 var cubeMan;
-//var cubeArms;
+var cubeArms;
 //--------------------
 var plane: Mesh;
 var sphere: Mesh;
@@ -49,6 +49,9 @@ var control: Control;
 var gui: GUI;
 var stats:Stats;
 var step:number = 0;
+
+var texture;
+
 
 function init() {
     // Instantiate a new Scene object
@@ -66,7 +69,7 @@ function init() {
     
     //Add a Plane to the Scene
 	planeGeometry = new PlaneGeometry(60, 60);
-	planeMaterial = new LambertMaterial({color:0xFFFFFF});
+	planeMaterial = new LambertMaterial({map: THREE.ImageUtils.loadTexture('images/notbad.png')});
 	plane = new Mesh(planeGeometry, planeMaterial);
 	plane.receiveShadow = true;
 	
@@ -78,9 +81,14 @@ function init() {
 	scene.add(plane);
 	console.log("Added Plane Primitive to scene...");
     
+    
+   
     //Add head to the Scene
 	cubeGeometry = new CubeGeometry(3, 3, 3);
 	cubeMaterial = new LambertMaterial({color:0x000FF});
+    //texture attempt
+    cubeMaterial = new THREE.MeshPhongMaterial(
+        {map: THREE.ImageUtils.loadTexture('images/lol.png')}); 
 	cubeHead = new Mesh(cubeGeometry, cubeMaterial);
 	cubeHead.castShadow = true;
 
@@ -96,7 +104,7 @@ function init() {
 
      //Add a body to the Scene
 	cubeGeometry = new CubeGeometry(5, 5, 2);
-	cubeMaterial = new LambertMaterial({color:0xFFD700});
+	cubeMaterial = new LambertMaterial({map: THREE.ImageUtils.loadTexture('images/woa.png')});
 	cubeBody = new Mesh(cubeGeometry, cubeMaterial);
 	cubeBody.castShadow = true;
 
@@ -222,7 +230,8 @@ function addControl(controlObject: Control):void {
 	gui.add(controlObject, 'rotationZ', 0, 0.5);
     gui.add(controlObject,'randomColor');
     //gui.add(controlObject, 'resetScene');
-    //gui.add(controlObject, 'rotationXArms', 0, 0.5);
+    //gui.add(controlObject, 'rotationXArms', 0.5, 1);
+    //gui.add(controlObject, 'rotationZArms', 0.5, 1);
 }
 
 function addStatsObject() {
@@ -250,20 +259,11 @@ function gameLoop():void {
         }
         
         /*if(obj == cubeArms){
+            cubeArms.rotation.z += control.rotationZArms;
             cubeArms.rotation.x += control.rotationXArms;
         }*/
         
     });
-    
-    
-    //scene.traverse(function(cubeManColor:THREE.MeshLambertMaterial){
-    //   if(cubeManColor instanceof LambertMaterial) {
-    //       cubeManColor = new LambertMaterial({color:0x000});
-    //       
-      // }
-        
-        
-    //});
 	
     
     

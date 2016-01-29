@@ -3,7 +3,8 @@ module objects {
         rotationX: number;
 		rotationY: number;
         rotationZ: number;
-        rotationXArms: number;
+        //rotationXArms: number;
+        //rotationZArms: number;
 		//bouncingSpeed: number;
 		constructor(rotationX: number, rotationY: number, rotationZ: number) {
             this.rotationX = rotationX;
@@ -11,6 +12,7 @@ module objects {
 			this.rotationZ = rotationZ;
             
             //this.rotationXArms = rotationXArms;
+            //this.rotationZArms = rotationZArms;
            
 		}
         

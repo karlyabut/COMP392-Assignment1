@@ -1,12 +1,15 @@
 var objects;
 (function (objects) {
     var Control = (function () {
+        //rotationXArms: number;
+        //rotationZArms: number;
         //bouncingSpeed: number;
         function Control(rotationX, rotationY, rotationZ) {
             this.rotationX = rotationX;
             this.rotationY = rotationY;
             this.rotationZ = rotationZ;
             //this.rotationXArms = rotationXArms;
+            //this.rotationZArms = rotationZArms;
         }
         Control.prototype.randomColor = function () {
             cubeHead.material.color.setRGB(Math.random(), Math.random(), Math.random());

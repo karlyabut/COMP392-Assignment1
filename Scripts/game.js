@@ -36,7 +36,7 @@ var cubeRightleg;
 var cubeLeftfoot;
 var cubeRightfoot;
 var cubeMan;
-//var cubeArms;
+var cubeArms;
 //--------------------
 var plane;
 var sphere;
@@ -46,6 +46,7 @@ var control;
 var gui;
 var stats;
 var step = 0;
+var texture;
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -57,7 +58,7 @@ function init() {
     scene.add(axes);
     //Add a Plane to the Scene
     planeGeometry = new PlaneGeometry(60, 60);
-    planeMaterial = new LambertMaterial({ color: 0xFFFFFF });
+    planeMaterial = new LambertMaterial({ map: THREE.ImageUtils.loadTexture('images/notbad.png') });
     plane = new Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
     plane.rotation.x = -0.5 * Math.PI;
@@ -69,6 +70,8 @@ function init() {
     //Add head to the Scene
     cubeGeometry = new CubeGeometry(3, 3, 3);
     cubeMaterial = new LambertMaterial({ color: 0x000FF });
+    //texture attempt
+    cubeMaterial = new THREE.MeshPhongMaterial({ map: THREE.ImageUtils.loadTexture('images/lol.png') });
     cubeHead = new Mesh(cubeGeometry, cubeMaterial);
     cubeHead.castShadow = true;
     cubeHead.position.x = 0;
@@ -80,7 +83,7 @@ function init() {
     console.log("Added Cube Primitive to scene...");
     //Add a body to the Scene
     cubeGeometry = new CubeGeometry(5, 5, 2);
-    cubeMaterial = new LambertMaterial({ color: 0xFFD700 });
+    cubeMaterial = new LambertMaterial({ map: THREE.ImageUtils.loadTexture('images/woa.png') });
     cubeBody = new Mesh(cubeGeometry, cubeMaterial);
     cubeBody.castShadow = true;
     cubeBody.position.x = 0;
@@ -174,7 +177,8 @@ function addControl(controlObject) {
     gui.add(controlObject, 'rotationZ', 0, 0.5);
     gui.add(controlObject, 'randomColor');
     //gui.add(controlObject, 'resetScene');
-    //gui.add(controlObject, 'rotationXArms', 0, 0.5);
+    //gui.add(controlObject, 'rotationXArms', 0.5, 1);
+    //gui.add(controlObject, 'rotationZArms', 0.5, 1);
 }
 function addStatsObject() {
     stats = new Stats();
@@ -195,15 +199,10 @@ function gameLoop() {
             cubeMan.rotation.z += control.rotationZ;
         }
         /*if(obj == cubeArms){
+            cubeArms.rotation.z += control.rotationZArms;
             cubeArms.rotation.x += control.rotationXArms;
         }*/
     });
-    //scene.traverse(function(cubeManColor:THREE.MeshLambertMaterial){
-    //   if(cubeManColor instanceof LambertMaterial) {
-    //       cubeManColor = new LambertMaterial({color:0x000});
-    //       
-    // }
-    //});
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
     // render the scene
