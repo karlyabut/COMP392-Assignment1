@@ -5,6 +5,7 @@
 //Last modified by: Karl Eisen Yabut
 //COMP392 - Advanced Graphics (Assignment 1 Cube Man)
 //Last commit: January 28, 2016 (completed project) / January 31, 2016 (added internal document)
+//****Note there will be a lot of commented out objects, tried something fun with it****
 
 import Scene = THREE.Scene;
 import Renderer = THREE.WebGLRenderer;
@@ -45,7 +46,7 @@ var cubeLeftfoot;
 var cubeRightfoot;
 
 var cubeMan;
-var cubeArms;
+//var cubeArms;
 //--------------------
 var plane: Mesh;
 var sphere: Mesh;
@@ -66,7 +67,7 @@ function init() {
 	setupRenderer(); // setup the default renderer
 	
 	setupCamera(); // setup the camera
-    
+    //adds a fog
     scene.fog = new THREE.Fog(0xffffff, 0.015, 100);
 	
     // add an axis helper to the scene
@@ -92,7 +93,7 @@ function init() {
     //Add head to the Scene
 	cubeGeometry = new CubeGeometry(3, 3, 3);
 	cubeMaterial = new LambertMaterial({color:0x000FF});
-    //texture attempt
+    //added texture
     cubeMaterial = new THREE.MeshPhongMaterial(
         {map: THREE.ImageUtils.loadTexture('images/lol.png')}); 
 	cubeHead = new Mesh(cubeGeometry, cubeMaterial);
