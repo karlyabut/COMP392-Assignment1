@@ -1,0 +1,5 @@
+Git project for Cube Man
+https://github.com/karlyabut/COMP392-Assignment1
+
+Link to live project on cloud (azure)
+http://karlyabutcom392assignment.azurewebsites.net/
