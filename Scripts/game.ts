@@ -1,4 +1,10 @@
 // MAIN GAME FILE
+// Re-used code (COMP392-Lesson01-Part1) Last modified source: 18 days ago
+// Author: Tom Tsiliopoulos 
+
+//Last modified by: Karl Eisen Yabut
+//COMP392 - Advanced Graphics (Assignment 1 Cube Man)
+//Last commit: January 28, 2016 (completed project) / January 31, 2016 (added internal document)
 
 import Scene = THREE.Scene;
 import Renderer = THREE.WebGLRenderer;

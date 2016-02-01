@@ -3,6 +3,7 @@ module objects {
         rotationX: number;
 		rotationY: number;
         rotationZ: number;
+      //this was done for fun
         //rotationXArms: number;
         //rotationZArms: number;
 		//bouncingSpeed: number;
@@ -11,11 +12,12 @@ module objects {
 			this.rotationY = rotationY;
 			this.rotationZ = rotationZ;
             
+          //this was done for fun
             //this.rotationXArms = rotationXArms;
             //this.rotationZArms = rotationZArms;
            
 		}
-        
+        //randomize the color of every cube
         public randomColor(): void{
             cubeHead.material.color.setRGB(Math.random(), Math.random(), Math.random());
             cubeBody.material.color.setRGB(Math.random(), Math.random(), Math.random());
@@ -26,8 +28,8 @@ module objects {
             cubeLeftfoot.material.color.setRGB(Math.random(), Math.random(), Math.random());
             cubeRightfoot.material.color.setRGB(Math.random(), Math.random(), Math.random());
             
-            //scene.add(cubeManColor)
         }
+        //attempt of resetting the scene **control not added this will only stop the rotation not reset it
         public resetScene(): void{
             this.rotationX = 0;
             this.rotationY = 0;
