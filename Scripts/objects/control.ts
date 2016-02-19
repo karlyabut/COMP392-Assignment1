@@ -1,41 +1,88 @@
+/// <reference path="../../typings/tsd.d.ts"/>
+
 module objects {
-	export class Control {
-        rotationX: number;
-		rotationY: number;
-        rotationZ: number;
-      //this was done for fun
-        //rotationXArms: number;
-        //rotationZArms: number;
-		//bouncingSpeed: number;
-		constructor(rotationX: number, rotationY: number, rotationZ: number) {
-            this.rotationX = rotationX;
-			this.rotationY = rotationY;
-			this.rotationZ = rotationZ;
-            
-          //this was done for fun
-            //this.rotationXArms = rotationXArms;
-            //this.rotationZArms = rotationZArms;
-           
-		}
-        //randomize the color of every cube
-        public randomColor(): void{
-            cubeHead.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeBody.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeLeftarm.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeRightarm.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeLeftleg.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeRightleg.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeLeftfoot.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            cubeRightfoot.material.color.setRGB(Math.random(), Math.random(), Math.random());
-            
+    // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
+    export class Control { 
+        // PRIVATE INSTANCE VARIABLES
+        private _planeWidth: number;
+        private _planeHeight: number;
+        
+        // PUBLIC INSTANCE VARIABLES
+        public rotationSpeedX: number;
+        public rotationSpeedY: number;
+        public rotationSpeedZ: number;
+        public numberOfObjects: number;
+        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
+        constructor(rotationSpeedX: number, rotationSpeedY: number, rotationSpeedZ: number, planeWidth: number, planeHeight: number) {
+            this.rotationSpeedX = rotationSpeedX;
+            this.rotationSpeedY = rotationSpeedY;
+            this.rotationSpeedZ = rotationSpeedZ;
+            this.numberOfObjects = scene.children.length;
+            this._planeWidth = planeWidth;
+            this._planeHeight = planeHeight;
         }
-        //attempt of resetting the scene **control not added this will only stop the rotation not reset it
-        public resetScene(): void{
-            this.rotationX = 0;
-            this.rotationY = 0;
-            this.rotationZ = 0;
-            
+
+
+        //PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++
+        
+        // Change camera view
+        public zoomPlanet1(): void {
+            for (var i = 0; i < zoom.length; i++) {
+                zoom[i] = false;
+            }
+            this.zoomIn(0);
+            zoom[0] = true;
+
         }
-       
-	}
+        
+        public zoomPlanet2(): void {
+            for (var i = 0; i < zoom.length; i++) {
+                zoom[i] = false;
+            }
+            this.zoomIn(1);
+            zoom[1] = true;
+        }
+        
+        public zoomPlanet3(): void {
+            for (var i = 0; i < zoom.length; i++) {
+                zoom[i] = false;
+            }
+            this.zoomIn(2);
+            zoom[2] = true;
+        }
+        
+        public zoomPlanet4(): void {
+            for (var i = 0; i < zoom.length; i++) {
+                zoom[i] = false;
+            }
+            this.zoomIn(3);
+            zoom[3] = true;
+        }
+        
+        public zoomPlanet5(): void {
+            for (var i = 0; i < zoom.length; i++) {
+                zoom[i] = false;
+            }
+            this.zoomIn(4);
+            zoom[4] = true;
+        }
+        
+        public zoomIn(num: number): void {
+            camera.position.set(planets[num].position.x - 25, planets[num].position.y + 25, planets[num].position.z + 25);
+            camera.lookAt(planets[num].position);
+        }
+        
+        public zoomOut(): void {
+            camera.position.set(-110, 110, 110);
+            camera.lookAt(scene.position);
+            for (var i = 0; i < zoom.length; i++) {
+                zoom[i] = false;   
+            } 
+        }
+        
+        // show scene objects
+        public outputObjects(): void {
+            console.log(scene.children);
+        }
+    }
 }
